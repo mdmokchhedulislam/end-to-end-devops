@@ -1,10 +1,15 @@
 # Stage 1: Build the React app
-FROM node:20 AS build
+FROM node:18 AS build
 
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Copy package files
 COPY package*.json ./
+
+# Remove existing node_modules and lockfile to avoid optional dependency issues
+RUN rm -rf node_modules package-lock.json
+
+# Install dependencies fresh
 RUN npm install
 
 # Copy all files and build
