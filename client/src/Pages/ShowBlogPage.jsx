@@ -12,8 +12,10 @@ const ShowBlogPage = () => {
   const fetchBlog =async(id)=>{
     try {
       
-      const response =await axios.get(import.meta.env.VITE_BACKEND_URI+"/get/"+id)
-      const data = await response.data
+      const response =await axios.get('http://localhost:5000/api')
+      console.log("response is ", response);
+      
+      const data = await response?.data
       setBlog(data)
     } catch (error) {
       console.log(error.message)
