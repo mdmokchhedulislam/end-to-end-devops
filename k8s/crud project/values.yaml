@@ -1,0 +1,49 @@
+frontend:
+  replicaCount: 2
+  selector: frontend
+
+  image:
+    repository: mokchhedul/branchbackend
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  service:
+    name: frontend-service
+    type: ClusterIP
+    port: 80
+
+backend:
+  replicaCount: 2
+  selector: backend
+
+  image:
+    repository: mokchhedul/branchbackend
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  service:
+    name: backend-service
+    type: ClusterIP
+    port: 5000
+
+db:
+  replicaCount: 1
+  selector: mongo
+
+  image:
+    repository: mongo
+    tag: latest
+    pullPolicy: IfNotPresent
+    containarname: crud-mongo
+
+  service:
+    name: mongo
+    type: ClusterIP
+    port: 27017
+    dbname: crud
+
+  storage:
+    size: 1Gi
+    path: /mnt/data/crud
+    accessMode: ReadWriteOnce
+    mntpath: /data/crud
