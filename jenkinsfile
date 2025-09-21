@@ -82,7 +82,7 @@ pipeline {
                         dir('client') {
                             sh 'docker build -t mokchhedul/branchfrontend:latest .'
                             sh 'trivy image --format table -o frontend-image-report.html mokchhedul/branchfrontend:latest '
-                            sh 'docker push mokchhedul/branchbackend:latest'
+                            sh 'docker push mokchhedul/branchfrontend:latest'
                         }
                     }
                 }
