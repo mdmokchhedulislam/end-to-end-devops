@@ -93,8 +93,8 @@ pipeline {
             steps {
                 sh '''
                   echo "Starting containers with Docker Compose..."
-                  docker compose down || true   
-                  docker compose up -d --build  
+                  docker-compose down || true   
+                  docker-compose up -d --build  
                 '''
             }
         }
