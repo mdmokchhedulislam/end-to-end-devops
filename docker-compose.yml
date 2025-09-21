@@ -34,9 +34,6 @@ services:
     ports:
       - "27017:27017"
     restart: unless-stopped
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
       - mongo-data:/data/db
     networks:

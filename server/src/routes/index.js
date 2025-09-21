@@ -4,6 +4,7 @@ const BlogModel = require("../models/Blog.model")
 
 // sare blog ko fetch karna hai 
 router.get("/",async(req,res)=>{
+    console.log("")
     const blogs = await BlogModel.find({})
     res.status(200).send(blogs)
 })
