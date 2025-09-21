@@ -64,7 +64,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred') {
-                        dir('api') {
+                        dir('server') {
                             sh 'docker build -t mokchhedul/branchbackend:latest .'
                             sh 'trivy image --format table -o backend-image-report.html mokchhedul/branchbackend:latest '
                             sh 'docker push mokchhedul/branchbackend:latest'
