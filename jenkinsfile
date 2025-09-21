@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/jaiswaladi246/3-Tier-DevSecOps-Mega-Project.git'
+                git branch: 'develop', url: 'https://github.com/mdmokchhedulislam/end-to-end-devops.git'
             }
         }
         
@@ -26,7 +26,7 @@ pipeline {
         
         stage('Backend Compilation') {
             steps {
-                dir('api') {
+                dir('server') {
                     sh 'find . -name "*.js" -exec node --check {} +'
                 }
             }
@@ -35,15 +35,15 @@ pipeline {
         stage('GitLeaks Scan') {
             steps {
                 sh 'gitleaks detect --source ./client --exit-code 1'
-                sh 'gitleaks detect --source ./api --exit-code 1'
+                sh 'gitleaks detect --source ./server --exit-code 1'
             }
         }
         
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonar') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=NodeJS-Project \
-                            -Dsonar.projectKey=NodeJS-Project '''
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=crud-project \
+                            -Dsonar.projectKey=crud-project '''
                 }
             }
         }
@@ -65,9 +65,9 @@ pipeline {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred') {
                         dir('api') {
-                            sh 'docker build -t adijaiswal/backend:latest .'
-                            sh 'trivy image --format table -o backend-image-report.html adijaiswal/backend:latest '
-                            sh 'docker push adijaiswal/backend:latest'
+                            sh 'docker build -t mokchhedul/branchbackend:latest .'
+                            sh 'trivy image --format table -o backend-image-report.html mokchhedul/branchbackend:latest '
+                            sh 'docker push mokchhedul/branchbackend:latest'
                            
                         }
                     }
@@ -80,9 +80,9 @@ pipeline {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred') {
                         dir('client') {
-                            sh 'docker build -t adijaiswal/frontend:latest .'
-                            sh 'trivy image --format table -o frontend-image-report.html adijaiswal/frontend:latest '
-                            sh 'docker push adijaiswal/frontend:latest'
+                            sh 'docker build -t mokchhedul/branchfrontend:latest .'
+                            sh 'trivy image --format table -o frontend-image-report.html mokchhedul/branchfrontend:latest '
+                            sh 'docker push mokchhedul/branchbackend:latest'
                         }
                     }
                 }
