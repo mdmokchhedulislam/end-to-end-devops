@@ -25,7 +25,7 @@ const CreateBlogPage = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post(`http://localhost:5000/api`,states)
+      const response = await axios.post(`http://www.mokchhedulislam.page.gd/api`,states)
       const data = response.data
 
       // Reset error state

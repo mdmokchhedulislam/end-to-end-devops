@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors())
 
 app.use(cors({
-  origin: ['www.mokchhedulislam.page.gd','http://localhost:5173'],
+  origin: ['http://www.mokchhedulislam.page.gd','http://localhost:5173'],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));

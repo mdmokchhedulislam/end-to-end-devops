@@ -12,7 +12,7 @@ const ShowBlogPage = () => {
   const fetchBlog =async(id)=>{
     try {
       
-      const response =await axios.get('http://localhost:5000/api')
+      const response =await axios.get('http://www.mokchhedulislam.page.gd/api')
       console.log("response is ", response);
       
       const data = await response?.data

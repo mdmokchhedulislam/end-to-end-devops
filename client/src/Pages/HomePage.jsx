@@ -8,7 +8,7 @@ const HomePage = () => {
 
   const fetchAllBlogs = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/");
+      const response = await axios.get("www.mokchhedulislam.page.gd/api/");
       console.log("response data is", response.data);
 
       setData(response.data.Blog || []);
@@ -45,7 +45,7 @@ export default HomePage;
 const BlogCard = ({ data, refetch }) => {
   const deleteFun = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/${data._id}`);
+      const response = await axios.delete(`http://www.mokchhedulislam.page.gd/api/${data._id}`);
       console.log(response.data);
       refetch();
     } catch (err) {
