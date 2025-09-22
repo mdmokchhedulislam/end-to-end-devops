@@ -2,16 +2,16 @@
 
 import mongoose from "mongoose";
 
-const blogSchema = new mongoose.Schema({
-    title:{
+const contactSchema = new mongoose.Schema({
+    name:{
         type:String,
         require:true,
     },
-    desc:{
+    email:{
         type:String,
         require:true,
     },
-    content:{
+    phone:{
         type:String,
         require:true,
     },
@@ -21,4 +21,4 @@ const blogSchema = new mongoose.Schema({
     }
 })
 
-export const blog = mongoose.model("blog",blogSchema)
+export const contact = mongoose.model("contact",contactSchema)
