@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crud-app
+  namespace: argocd
+spec:
+  project: default
+
+
+  source:
+    repoURL: 'https://github.com/mdmokchhedulislam/end-to-end-devops.git'
+    targetRevision: develop
+    path: k8s/crud-project
+
+  destination:
+    server: 'https://kubernetes.default.svc'  
+    namespace: default
+
+ 
+  syncPolicy:
+    automated:
+      prune: true       
+      selfHeal: true     
+    syncOptions:
+      - CreateNamespace=true  
