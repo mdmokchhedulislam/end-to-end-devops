@@ -3,7 +3,7 @@ frontend:
   selector: frontend
 
   image:
-    repository: mokchhedul/branchbackend
+    repository: mokchhedul/branchfrontend
     tag: latest
     pullPolicy: IfNotPresent
 
